@@ -1,0 +1,97 @@
+@import '../../assets/styles/base/variables';
+@import '../../assets/styles/base/main';
+
+input {
+    width: 100%;
+    font-size: .8rem;
+    padding: 20px 10px;
+}
+
+.btn {
+    font-size: .8rem;
+    @extend %boxButton;
+
+    &:not(.add) {
+        position: absolute;
+        margin: auto;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &.success {
+        right: 78px;
+        border-color: $success;
+        color: $success;
+
+        &:hover {
+            background-color: $success;
+            color: #ffffff;
+        }
+    }
+
+    &.error {
+        right: 8px;
+        border-color: $error;
+        color: $error;
+
+        &:hover {
+            background-color: $error;
+            color: #ffffff;
+        }
+    }
+
+    &.cancel {
+        right: 8px;
+    }
+}
+
+ul {
+    margin-top: 24px;
+
+    li {
+        display: flex;
+        position: relative;
+        margin: 5px 0;
+        border: 2px $mainColor solid;
+        border-radius: 5px;
+
+        &.no-frame {
+            padding: 0;
+            border: none;
+            justify-content: flex-end;
+
+            .btn {
+                margin: 0;
+            }
+        }
+    }
+}
+
+.existing-item {
+
+    input {
+        padding: 10px;
+
+        &.active {
+            padding: 20px 10px;
+        }
+    }
+}
+
+.tooltip {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    padding: 10px;
+    font-size: .7rem;
+    background-color: $mainColor;
+    opacity: .8;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.item-info {
+    font-size: .6rem;
+    left: -8px;
+    top: -24px;
+}

@@ -1,0 +1,23 @@
+<section>
+
+  <form class="form-sign" (submit)="onSubmit($event)">
+
+    <p class="error" *ngIf="errorContent">{{errorContent}}</p>
+
+    <div class="form-container" [ngClass]="{'changed': changedName}">
+      <input type="text" name="name" id="name" required (input)="onName($event)" [(ngModel)]="userName">
+      <label for="name">Enter your login login</label>
+    </div>
+
+    <div class="form-container" [ngClass]="{'changed': changedPassword}">
+      <input type="password" name="password" id="password" required (input)="onPass($event)" [(ngModel)]="userPassword">
+      <label for="password">Enter your password</label>
+    </div>
+
+    <div class="form-container">
+      <input type="submit" value="Log in" class="btn">
+    </div>
+    
+  </form>
+
+</section>

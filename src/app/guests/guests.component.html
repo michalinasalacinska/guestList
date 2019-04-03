@@ -1,0 +1,39 @@
+<ul>
+  <li class="existing-item" *ngFor="let item of items" (click)="item.editable = true" (mouseover)="item.hover = true" (mouseout)="item.hover = false">
+    <p class="tooltip item-info" *ngIf="item.hover">{{item.model.get('user').get('username')}}, {{item.model.get('updatedAt').toLocaleDateString()}}</p>
+    <input
+      [class.active]="item.editable"
+      type="text"
+      name="content"
+      id="input-{{ item.model.id }}"
+      [(ngModel)]="item.model.content"
+      (keyup)="editable(item, $event)"
+      (keydown.enter)="save(item)"
+      (blur)="uneditable(item)"
+    />
+    <button *ngIf="item.editable" class="btn success" (click)="save(item)">
+      save
+    </button>
+    <button *ngIf="item.editable" class="btn error" (click)="remove(item)">
+      delete
+    </button>
+  </li>
+
+  <li *ngIf="add">
+    <input
+      type="text"
+      name="add-list"
+      id="add-element"
+      class="hidden-input"
+      placeholder="Nowy element"
+      [(ngModel)]="newElement"
+      (keydown.enter)="saveNew()"
+    />
+    <button class="btn success" (click)="saveNew()">save</button>
+    <button class="btn cancel" (click)="cancelNew()">cancel</button>
+  </li>
+
+  <li class="no-frame" *ngIf="add === false">
+    <button class="btn add" (click)="add = true">add</button>
+  </li>
+</ul>

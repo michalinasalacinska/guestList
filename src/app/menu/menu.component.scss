@@ -1,0 +1,19 @@
+@import '../../assets/styles/base/main';
+@import '../../assets/styles/base/variables';
+
+nav {
+    height: 100px;
+    border-bottom: 2px $mainColor solid;
+}
+
+.btn {
+    @extend %boxButton;
+}
+
+.btn-container {
+    height: 98px;
+    padding: 20px;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #ffffff;
+}

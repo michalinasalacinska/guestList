@@ -1,0 +1,51 @@
+<section>
+  <!-- current lists -->
+  <div class="list-container" *ngFor="let item of items">
+    <p *ngIf="item.showToast" class="toast success">List has been copied to your clipboard</p>
+    <header>
+      <input
+        class="header-input"
+        type="text"
+        name="add-list"
+        id="add-list"
+        placeholder="{{ item.model.type }}"
+        [(ngModel)]="item.model.type"
+        (blur)="editType(item)"
+        (keydown.enter)="editType(item)"
+      />
+      <button class="btn" (click)="show(item)">
+        {{item.show}}
+      </button>
+      <button class="btn error" (click)="remove(item)">remove</button>
+      <button class="btn success" (click)="generate(item)">copy</button>
+    </header>
+
+    <!-- list items -->
+    <app-guests
+      [hidden]="item.editable === false"
+      [typeObj]="item.model"
+    ></app-guests>
+
+  </div>
+
+  <!-- new list -->
+  <div class="list-container add" *ngIf="add">
+    <div class="form-container">
+      <input
+        type="text"
+        name="add-list"
+        id="add-list"
+        placeholder="Nazwa listy"
+        [(ngModel)]="newElement"
+        (keydown.enter)="saveNew()"
+      />
+    </div>
+    <button class="btn success" (click)="saveNew()">save</button>
+    <button class="btn" (click)="add = false">cancel</button>
+  </div>
+
+  <div class="list-container no-bg" *ngIf="add === false">
+    <button class="btn" (click)="add = true">Add list</button>
+  </div>
+
+</section>
