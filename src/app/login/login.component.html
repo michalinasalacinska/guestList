@@ -6,7 +6,7 @@
 
     <div class="form-container" [ngClass]="{'changed': changedName}">
       <input type="text" name="name" id="name" required (input)="onName($event)" [(ngModel)]="userName">
-      <label for="name">Enter your login login</label>
+      <label for="name">Enter your login</label>
     </div>
 
     <div class="form-container" [ngClass]="{'changed': changedPassword}">
